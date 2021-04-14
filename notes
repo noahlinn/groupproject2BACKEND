@@ -1,0 +1,5 @@
+sequelize model:generate --name=user --attributes name:text,email:text,password:text
+sequelize model:generate --name=review --attributes userId:integer,businessId:integer,rating:integer,title:text,description:text
+sequelize model:generate --name=business --attributes userId:integer,name:text,type:text,address:text,description:text
+
+

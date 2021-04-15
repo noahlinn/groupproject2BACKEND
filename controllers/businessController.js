@@ -55,7 +55,8 @@ businessController.findReviews = async (req,res) => {
     try {
         const business = await models.business.findOne({where:{
             id: req.params.id
-        }})
+        },
+    })
         const reviews = await business.getUsers()
         res.json({message: 'reviews on the business', reviews})
     } catch (error) {

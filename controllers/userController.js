@@ -7,12 +7,14 @@ const userController = {}
 
 userController.signUp = async (req,res) => {
   try {
+    console.log('hello')
     const hashedPassword = bcrypt.hashSync(req.body.password, 10)
     const user = await models.user.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword
     })
+    console.log('heltwolo')
     const encryptedId = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
     res.json({message: 'Signed up', userId: encryptedId, userName: user.name})
   } catch (error) {

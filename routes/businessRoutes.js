@@ -11,6 +11,8 @@ businessRoutes.get('/:id', businessController.getInfo);
 businessRoutes.get('/:id/reviews', businessController.findReviews);
 businessRoutes.delete('/:id/delete', businessController.delete);
 businessRoutes.put('/:id/update', businessController.update)
+businessRoutes.get('/byName/:name', businessController.getByName)
+businessRoutes.get('/byType/:type', businessController.getByType)
 
 
 module.exports = businessRoutes;

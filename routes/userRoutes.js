@@ -5,6 +5,8 @@ const userRoutes = express.Router();
 
 userRoutes.post('/', userController.signUp)
 userRoutes.post('/login', userController.login)
+userRoutes.get('/:id/businesses', userController.findBusinesses)
+userRoutes.get('/:id/reviews', userController.findReviews)
 
 
 

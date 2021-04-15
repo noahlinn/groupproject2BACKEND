@@ -4,14 +4,14 @@ const reviewController = {}
 
 reviewController.addOne = async (req,res) => {
     try {
-        const newReview = await models.review.create({where: {
+        const newReview = await models.review.create({
             userId: req.body.userId,
             businessId: req.body.businessId,
             rating: req.body.rating,
             title: req.body.title,
             description: req.body.description
-        }
         })
+        
         res.json({message: 'review added', newReview})
     } catch (error) {
       res.json({error})

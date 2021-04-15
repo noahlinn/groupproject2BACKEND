@@ -4,7 +4,7 @@ const reviewController = {}
 
 reviewController.addOne = async (req,res) => {
     try {
-        const newReview = await models.review.findOrCreate({where: {
+        const newReview = await models.review.create({where: {
             userId: req.body.userId,
             businessId: req.body.businessId,
             rating: req.body.rating,
@@ -19,6 +19,17 @@ reviewController.addOne = async (req,res) => {
 }
 
 
+reviewController.delete = async (req,res) => {
+    try {
+        const review = await models.review.findOne({where:{
+            id: req.params.id
+        }})
+        await review.destroy()
+        res.json({message: 'review deleted'})
+    } catch (error) {
+        res.json({error})
+    }
+}
 
 
 

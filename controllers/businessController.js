@@ -63,8 +63,6 @@ businessController.findReviews = async (req,res) => {
     }
 }
 
-
-
 businessController.delete = async (req,res) => {
     try {
         const business = await models.business.findOne({where:{
@@ -72,6 +70,19 @@ businessController.delete = async (req,res) => {
         }})
         await business.destroy()
         res.json({message: 'business deleted'})
+    } catch (error) {
+        res.json({error})
+    }
+}
+
+businessController.update = async (req,res) => {
+    try {
+        const updates = req.body
+        const business = await models.business.findOne({where:{
+            id: req.params.id
+        }})
+        const updatedBusiness = await business.update(updates)
+        res.json({message: 'business updated', updatedBusiness})
     } catch (error) {
         res.json({error})
     }

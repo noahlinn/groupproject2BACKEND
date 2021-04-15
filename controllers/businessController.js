@@ -1,18 +1,20 @@
 const models = require('../models')
-
+require('dotenv').config()
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 const businessController = {}
 
 
 //adds business to business table
 businessController.addOne = async (req,res) => {
     try {
+        const decryptedId = jwt.verify(req.body.userId, process.env.JWT_SECRET)
         const newbusiness = await models.business.create({
-            userId: req.body.userId,
+            userId: decryptedId.userId,
             name: req.body.name,
             type: req.body.type,
             address: req.body.address,
             description: req.body.description
-        
         })
         res.json({message: 'business added', newbusiness})
     } catch (error) {

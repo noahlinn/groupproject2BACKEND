@@ -59,10 +59,10 @@ userController.findBusinesses = async (req,res) => {
 //gets all businesses that user has written a review on as well as the review
 userController.findReviews = async (req,res) => {
   try {
-    // const decryptedId = jwt.verify(req.params.id, process.env.JWT_SECRET)
+    const decryptedId = jwt.verify(req.params.id, process.env.JWT_SECRET)
     const user = await models.user.findOne({where:{
-      // id: decryptedId.userId
-      
+      id: decryptedId.userId
+
     }})
     const userReviews = await user.getBusinesses()
     res.json({user, userReviews})

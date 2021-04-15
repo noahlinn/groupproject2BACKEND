@@ -8,6 +8,7 @@ const routesReport = rowdy.begin(app)
 app.use(express.json())
 app.use(require('cors')())
 
+// const jwt = require('jsonwebtoken')
 
 const userRoutes = require('./routes/userRoutes')
 const businessRoutes = require('./routes/businessRoutes')

@@ -6,13 +6,13 @@ const businessController = {}
 //adds business to business table
 businessController.addOne = async (req,res) => {
     try {
-        const newbusiness = await models.business.create({where: {
+        const newbusiness = await models.business.create({
             userId: req.body.userId,
             name: req.body.name,
             type: req.body.type,
             address: req.body.address,
             description: req.body.description
-        }
+        
         })
         res.json({message: 'business added', newbusiness})
     } catch (error) {

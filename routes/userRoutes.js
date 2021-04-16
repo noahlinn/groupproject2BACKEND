@@ -7,6 +7,7 @@ userRoutes.post('/', userController.signUp)
 userRoutes.post('/login', userController.login)
 userRoutes.get('/:id/businesses', userController.findBusinesses)
 userRoutes.get('/:id/reviews', userController.findReviews)
+// userRoutes.get('/:id', userController.getOne)
 
 
 

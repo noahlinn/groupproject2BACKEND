@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 
       models.business.belongsToMany(models.user, {through: 'review'})
       models.business.belongsTo(models.user)
+      models.business.hasMany(models.review)
     }
   };
   business.init({

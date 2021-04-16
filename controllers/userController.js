@@ -71,6 +71,18 @@ userController.findReviews = async (req,res) => {
   }
 }
 
+userController.getUser = async(req,res) => {
+  try {
+    const user = await models.user.findOne({where:{
+      id: req.params.id
+    }})
+      let userName = user.name
+    res.json({userName})
+
+  } catch (error) {
+    res.json({error})
+  }
+}
 
 
 

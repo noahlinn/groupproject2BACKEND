@@ -16,3 +16,6 @@ businessRoutes.get('/byType/:type', businessController.getByType)
 
 
 module.exports = businessRoutes;
+
+
+

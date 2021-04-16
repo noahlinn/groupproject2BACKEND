@@ -35,6 +35,7 @@ businessController.getAll = async (req,res) => {
 }
 
 
+
 businessController.getByName = async (req,res) => {
     try {
         const businesses = await models.business.findAll({where:{
@@ -87,7 +88,7 @@ businessController.findReviews = async (req,res) => {
             id: req.params.id
             }
     })
-        const reviews = await business.getReviews() 
+        const reviews = await business.getReviews()
         res.json({message: 'reviews on the business', reviews})
     } catch (error) {
         res.json({error: 'business has no reviews'})

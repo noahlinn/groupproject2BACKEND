@@ -16,7 +16,7 @@ userController.signUp = async (req, res) => {
     })
     console.log('hello')
     const encryptedId = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
-    res.json({ message: 'Signed up', userId: encryptedId, userName: user.name, userEmail: user.email})
+    res.json({message: 'Signed up', userId: encryptedId, userName: user.name, userEmail: user.email})
   } catch (error) {
     res.status(400)
     res.json({ error: 'You used that email already, silly.' })
@@ -32,8 +32,8 @@ userController.login = async (req, res) => {
     })
     if (bcrypt.compareSync(req.body.password, user.password)) {
       const encryptedId = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
-      res.json({ message: 'login successful', userId: encryptedId, userName: user.name, userEmail: user.email })
-    } else {
+      res.json({message: 'login successful', userId: encryptedId, userName: user.name, userEmail: user.email})
+    }else{
       res.status(401)
       res.json({ error: 'Password is incorrect' })
     }
@@ -77,6 +77,18 @@ userController.findReviews = async (req, res) => {
   }
 }
 
+userController.getUser = async(req,res) => {
+  try {
+    const user = await models.user.findOne({where:{
+      id: req.params.id
+    }})
+      let userName = user.name
+      let userEmail = user.email
+    res.json({userName, userEmail})
+  } catch (error) {
+    res.json({error})
+  }
+}
 
 
 

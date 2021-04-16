@@ -14,7 +14,7 @@ userController.signUp = async (req,res) => {
       password: hashedPassword
     })
     const encryptedId = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
-    res.json({message: 'Signed up', userId: encryptedId, userName: user.name})
+    res.json({message: 'Signed up', userId: encryptedId, userName: user.name, userEmail: user.email})
   } catch (error) {
     res.status(400)
     res.json({error: 'You used that email already, silly.'})
@@ -30,7 +30,7 @@ userController.login = async (req,res) => {
     })
     if(bcrypt.compareSync(req.body.password, user.password)){
       const encryptedId = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
-      res.json({message: 'login successful', userId: encryptedId, userName: user.name})
+      res.json({message: 'login successful', userId: encryptedId, userName: user.name, userEmail: user.email})
     }else{
       res.status(401)
       res.json({error: 'Password is incorrect'})

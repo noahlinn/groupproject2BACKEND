@@ -88,7 +88,7 @@ businessController.findReviews = async (req,res) => {
             id: req.params.id
             }
     })
-        const reviews = await business.getUsers()
+        const reviews = await business.getReviews()
         res.json({message: 'reviews on the business', reviews})
     } catch (error) {
         res.json({error: 'business has no reviews'})

@@ -23,8 +23,10 @@ reviewController.addOne = async (req,res) => {
 
 reviewController.delete = async (req,res) => {
     try {
+        const decryptedId = jwt.verify(req.params.userId, process.env.JWT_SECRET)
         const review = await models.review.findOne({where:{
-            id: req.params.id
+            userId: decryptedId.userId,
+            businessId: req.params.businessId
         }})
         await review.destroy()
         res.json({message: 'review deleted'})

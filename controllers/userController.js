@@ -77,7 +77,8 @@ userController.getUser = async(req,res) => {
       id: req.params.id
     }})
       let userName = user.name
-    res.json({userName})
+      let userEmail = user.email
+    res.json({userName, userEmail})
 
   } catch (error) {
     res.json({error})

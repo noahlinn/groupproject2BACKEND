@@ -14,7 +14,7 @@ userController.signUp = async (req,res) => {
       email: req.body.email,
       password: hashedPassword
     })
-    console.log('heltwolo')
+    console.log('hello')
     const encryptedId = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
     res.json({message: 'Signed up', userId: encryptedId, userName: user.name})
   } catch (error) {

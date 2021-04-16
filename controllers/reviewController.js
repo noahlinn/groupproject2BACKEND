@@ -34,6 +34,19 @@ reviewController.delete = async (req,res) => {
     }
 }
 
+reviewController.update = async (req,res) => {
+    try {
+        const updates = req.body
+        const review = await models.review.findOne({where:{
+            id: req.params.id
+        }})
+        const updatedReview = await review.update(updates)
+        res.json({message: 'review updated', updatedReview})
+    } catch (error) {
+        res.json({error})
+    }
+}
+
 
 
 

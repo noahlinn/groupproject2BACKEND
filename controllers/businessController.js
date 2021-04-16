@@ -35,6 +35,7 @@ businessController.getAll = async (req,res) => {
 }
 
 
+
 businessController.getByName = async (req,res) => {
     try {
         const businesses = await models.business.findAll({where:{

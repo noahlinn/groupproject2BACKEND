@@ -38,8 +38,10 @@ reviewController.delete = async (req,res) => {
 reviewController.update = async (req,res) => {
     try {
         const updates = req.body
+        const decryptedId = jwt.verify(req.params.userId, process.env.JWT_SECRET)
         const review = await models.review.findOne({where:{
-            id: req.params.id
+            userId: decryptedId.userId,
+            businessId: req.params.businessId
         }})
         const updatedReview = await review.update(updates)
         res.json({message: 'review updated', updatedReview})

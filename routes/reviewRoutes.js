@@ -6,7 +6,7 @@ const reviewRoutes = express.Router();
 
 reviewRoutes.post('/', reviewController.addOne);
 reviewRoutes.delete('/:userId/:businessId/delete', reviewController.delete);
-reviewRoutes.put('/:id/update', reviewController.update)
+reviewRoutes.put('/:userId/:businessId/update', reviewController.update)
 
 
 module.exports = reviewRoutes;

@@ -24,7 +24,7 @@ businessController.addOne = async (req,res) => {
     }
 }
 
-//gets all businesses & info
+//gets all businesses & infoherok
 businessController.getAll = async (req,res) => {
     try {
         const allBusinesses = await models.business.findAll()

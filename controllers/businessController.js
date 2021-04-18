@@ -83,12 +83,15 @@ businessController.getInfo = async (req,res) => {
 //(gets all reviews)
 businessController.findReviews = async (req,res) => {
     try {
-        const business = await models.business.findOne({
+        const reviews = await models.review.findAll({
             where:{
-            id: req.params.id
-            }
-    })
-        const reviews = await business.getReviews()
+                businessId: req.params.id
+            },
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        })
+
         res.json({message: 'reviews on the business', reviews})
     } catch (error) {
         res.json({error: 'business has no reviews'})

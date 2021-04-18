@@ -14,6 +14,7 @@ reviewController.addOne = async (req,res) => {
             title: req.body.title,
             description: req.body.description
         })
+
         res.json({message: 'review added', newReview})
     } catch (error) {
       res.json({error})

@@ -8,7 +8,8 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "rowdy-logger": "^1.0.2",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
   },
   "scripts": {
     "start": "node server.js",
@@ -17,7 +18,6 @@
   "name": "groupproject2BACKEND",
   "version": "1.0.0",
   "main": "seed.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/noahlinn/groupproject2BACKEND.git"
